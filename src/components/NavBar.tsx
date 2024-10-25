@@ -17,15 +17,18 @@ function NavBar({
 	pokemonList,
 	backClick,
 	nextClick,
-}: NavBarProps) {
-	return (
-		<div>
-			{pokemonIndex > 0 && ( <button onClick={backClick}>Précédent</button> )}
-			{pokemonIndex < pokemonList.length - 1 && (
-				<button onClick={nextClick}>Suivant</button>
-			)}
-		</div>
-	);
-}
+}: NavBarProps) 
+
+const NavBar = ({ pokemonList,setpokemonIndex }) => {
+    return (
+      <nav>
+        {pokemonList.map((pokemon, index) => (
+          <button type="button" key={pokemon.name} onClick={()=> setpokemonIndex(index)}>
+            {pokemon.name}
+          </button>
+        ))}
+      </nav>
+    );
+  };
 
 export default NavBar;
